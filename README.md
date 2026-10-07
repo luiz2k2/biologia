@@ -158,6 +158,6 @@ O projeto está 100% configurado para a Vercel através do arquivo `vercel.json`
 
 # Entrega
 
-**GitHub:** [LINK DO REPOSITÓRIO]
+**GitHub:** https://github.com/luiz2k2/biologia
 
-**Vercel:** [LINK DO SISTEMA]
+**Vercel:** https://biologia-frontend.vercel.app/

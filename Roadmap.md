@@ -34,13 +34,13 @@ Este documento registra o planejamento, etapas e progresso de implementação do
   - Validação funcional de login, persistência no LocalStorage, cálculo de notas, submissão de respostas e CRUD completo.
 - [x] **14. Correção de erros e Refinamentos Visuais**
   - Tratamento de estados vazios, feedback visual (toasts), paleta biológica harmoniosa e validações de formulário.
-- [ ] **15. Publicação no GitHub**
-  - Envio do código-fonte para o repositório remoto do estudante/professor.
-- [ ] **16. Deploy na Vercel**
-  - Publicação do frontend na plataforma de hospedagem em nuvem Vercel.
-- [ ] **17. Teste final do sistema em produção**
+- [x] **15. Publicação no GitHub**
+  - Repositório oficial publicado: [https://github.com/luiz2k2/biologia](https://github.com/luiz2k2/biologia)
+- [x] **16. Deploy na Vercel**
+  - Aplicação publicada com sucesso: [https://biologia-frontend.vercel.app/](https://biologia-frontend.vercel.app/)
+- [x] **17. Teste final do sistema em produção**
   - Validação dos links públicos em dispositivos reais e preenchimento final dos links no README.
 
 ---
 
-*Observação: As etapas 15 a 17 são concluídas no momento da publicação oficial nos serviços externos (GitHub e Vercel).*
+*Todas as 17 etapas foram concluídas com sucesso.*

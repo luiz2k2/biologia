@@ -88,6 +88,8 @@ biologia-sistema/
 
 ## 8. Estado Atual do Projeto
 O sistema encontra-se com todas as funcionalidades centrais implementadas e validadas:
+- **Repositório GitHub:** [https://github.com/luiz2k2/biologia](https://github.com/luiz2k2/biologia)
+- **Aplicação no ar na Vercel:** [https://biologia-frontend.vercel.app/](https://biologia-frontend.vercel.app/)
 - Frontend responsivo concluído e testado;
 - Persistência local e integração com MongoDB Atlas implementadas;
-- Pronto para hospedagem estática direta na Vercel ou deploy fullstack.
+- Projeto finalizado e pronto para avaliação docente e acadêmica.

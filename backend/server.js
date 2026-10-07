@@ -8,7 +8,14 @@ import { Activity } from './models/Activity.js';
 import { Question } from './models/Question.js';
 import { Submission } from './models/Submission.js';
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const frontendPath = path.join(__dirname, '../frontend');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -17,6 +24,9 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://isabella:isabella@
 // Middlewares
 app.use(cors());
 app.use(express.json());
+
+// Servir arquivos estáticos do frontend
+app.use(express.static(frontendPath));
 
 // Conexão com o MongoDB Atlas
 mongoose.connect(MONGODB_URI)
@@ -213,6 +223,18 @@ app.delete('/api/questions/:id', async (req, res) => {
     res.status(204).send();
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+});
+
+// Rota para servir a página inicial do frontend
+app.get('/', (req, res) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
+});
+
+// Fallback para qualquer outra rota não-API
+app.get('*', (req, res) => {
+  if (!req.path.startsWith('/api')) {
+    res.sendFile(path.join(frontendPath, 'index.html'));
   }
 });
 

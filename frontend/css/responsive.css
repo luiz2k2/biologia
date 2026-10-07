@@ -1,0 +1,159 @@
+/* ==========================================================================
+   BioConecta - Responsividade e Mídias
+   Garante adaptação impecável em Smartphones, Tablets e Desktops
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Telas Médias e Tablets (Abaixo de 1024px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .main-content {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .grid-3-cols {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .grid-4-cols {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .header-actions .user-details {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Dispositivos Móveis (Abaixo de 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: block;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border-bottom: 2px solid var(--primary-500);
+    flex-direction: column;
+    padding: 1.25rem 1.5rem;
+    gap: 0.5rem;
+    box-shadow: var(--shadow-xl);
+    display: none;
+    z-index: 99;
+  }
+
+  .nav-menu.open {
+    display: flex;
+  }
+
+  .nav-link {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: var(--radius-md);
+  }
+
+  .header-container {
+    padding: 0.75rem 1rem;
+  }
+
+  .brand-text h1 {
+    font-size: 1.1rem;
+  }
+
+  .brand-text span {
+    font-size: 0.65rem;
+  }
+
+  .grid-3-cols, .grid-4-cols, .grid-2-cols {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Hero Banner */
+  .hero-banner-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.25rem !important;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  /* Modais */
+  .modal-dialog {
+    max-height: 95vh;
+    border-radius: var(--radius-md);
+    margin: 0.5rem;
+  }
+
+  .modal-header, .modal-body, .modal-footer {
+    padding: 1rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Filtros */
+  .filter-main-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input-box {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Rodapé */
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Dispositivos Pequenos (Abaixo de 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .btn {
+    width: 100%;
+  }
+
+  .card-footer {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+
+  .card-footer .btn {
+    width: 100%;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+  }
+
+  .toast {
+    min-width: calc(100vw - 2rem);
+    left: 1rem;
+    right: 1rem;
+  }
+}

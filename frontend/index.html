@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BioConecta - Plataforma de Apoio à Disciplina de Biologia</title>
+  <meta name="description" content="Mini Sistema Web para a disciplina de Biologia desenvolvido para auxiliar professores e alunos no ensino, organização e acompanhamento de atividades.">
+  
+  <!-- Fontes do Google (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Folhas de Estilos -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- ====================================================================
+         CABEÇALHO / NAVBAR PRINCIPAL
+         ==================================================================== -->
+    <header class="app-header">
+      <div class="header-container">
+        
+        <a href="#inicio" class="brand-wrapper" title="BioConecta - Página Inicial">
+          <div class="brand-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+              <path d="M12 6v6l4 2"/>
+              <circle cx="12" cy="12" r="3" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1>BioConecta</h1>
+            <span>Disciplina de Biologia</span>
+          </div>
+        </a>
+
+        <!-- Menu de Navegação -->
+        <nav>
+          <ul class="nav-menu" id="main-nav-menu">
+            <li><a href="#inicio" class="nav-link" id="nav-link-home">🏠 Início</a></li>
+            <li><a href="#conteudos" class="nav-link" id="nav-link-contents">📚 Conteúdos</a></li>
+            <li><a href="#atividades" class="nav-link" id="nav-link-activities">📝 Atividades</a></li>
+            <li><a href="#questoes" class="nav-link" id="nav-link-questions">🧬 Banco de Questões</a></li>
+            <li><a href="#dashboard" class="nav-link" id="nav-link-dashboard">📊 Meu Painel</a></li>
+          </ul>
+        </nav>
+
+        <!-- Ações do Usuário e Login -->
+        <div class="header-actions">
+          <div class="user-badge-info" id="user-badge-box">
+            <div class="user-avatar-circle" id="user-avatar-circle">U</div>
+            <div class="user-details">
+              <span class="user-name" id="user-display-name">Carregando...</span>
+              <span class="user-role-label" id="user-role-text">Aluno</span>
+            </div>
+            <button type="button" class="btn btn-outline btn-sm" id="btn-logout" title="Sair da sessão atual" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; margin-left: 0.25rem;">
+              Sair
+            </button>
+          </div>
+
+          <a href="#login" class="btn btn-primary btn-sm" id="nav-link-login" style="display: none;">
+            Entrar
+          </a>
+
+          <button type="button" class="hamburger-btn" id="hamburger-toggle" aria-label="Abrir menu móvel">
+            ☰
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- ====================================================================
+         CONTEÚDO PRINCIPAL (SPA VIEWS)
+         ==================================================================== -->
+    <main class="main-content">
+      
+      <!-- ------------------------------------------------------------------
+           VIEW 1: PÁGINA INICIAL (LANDING PAGE)
+           ------------------------------------------------------------------ -->
+      <section id="view-home" class="view-section active">
+        <!-- Hero Banner -->
+        <div class="card" style="margin-bottom: 2.5rem; background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 50%, #e0f2fe 100%); border: 1px solid #a7f3d0;">
+          <div class="card-body hero-banner-content" style="padding: 3.5rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem;">
+            <div style="max-width: 650px;">
+              <span class="badge badge-citologia" style="margin-bottom: 0.75rem; font-size: 0.82rem;">Plataforma Educacional Integrada</span>
+              <h2 style="font-size: 2.4rem; font-weight: 800; color: #064e3b; line-height: 1.2; margin-bottom: 1rem;">
+                Explore a Ciência da Vida com o <span style="color: var(--primary-600);">BioConecta</span>
+              </h2>
+              <p style="font-size: 1.1rem; color: #334155; line-height: 1.6; margin-bottom: 1.75rem;">
+                Desenvolvido em parceria com o professor da disciplina de <strong>Biologia</strong> para organizar conteúdos temáticos, disponibilizar atividades avaliativas interativas e acompanhar o desempenho e aprendizado de cada estudante.
+              </p>
+              <div class="hero-cta-group" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="#conteudos" class="btn btn-primary btn-lg">Explorar Conteúdos Didáticos</a>
+                <a href="#login" class="btn btn-outline btn-lg" style="background: white;">Acessar o Sistema</a>
+              </div>
+            </div>
+
+            <div style="font-size: 7rem; line-height: 1; user-select: none; filter: drop-shadow(0 10px 15px rgba(16,185,129,0.2));" class="hero-icon-visual">
+              🌿🔬🧬
+            </div>
+          </div>
+        </div>
+
+        <!-- Destaques dos Recursos -->
+        <div style="margin-bottom: 3rem;">
+          <div style="text-align: center; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.8rem; font-weight: 800; color: var(--text-main);">Recursos do Mini Sistema Web</h3>
+            <p style="color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0.5rem auto 0;">
+              Conectando o planejamento do professor às necessidades práticas dos alunos em sala de aula.
+            </p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;" class="grid-3-cols">
+            
+            <div class="card">
+              <div class="card-body">
+                <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">📚</div>
+                <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Conteúdos por Grandes Temas</h4>
+                <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">
+                  Citologia, Genética, Ecologia, Evolução, Fisiologia Humana, Botânica, Zoologia e Biotecnologia organizados de forma clara com resumos didáticos e links de apoio.
+                </p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">📝</div>
+                <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Atividades Avaliativas</h4>
+                <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">
+                  Exercícios objetivos com prazos de entrega, pontuação automática imediata e explicações pedagógicas sobre cada alternativa para consolidar o aprendizado.
+                </p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">🧬</div>
+                <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Banco de Questões</h4>
+                <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">
+                  Ambiente de treino dinâmico com filtros por nível de dificuldade (Fácil, Médio, Difícil) e comentários gabaritados para preparação para vestibulares e ENEM.
+                </p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">👩‍🏫</div>
+                <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Painel do Professor</h4>
+                <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">
+                  Controle total para cadastrar, editar e excluir conteúdos e atividades, além de monitorar relatórios de submissões e notas de toda a turma.
+                </p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">👨‍🎓</div>
+                <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Painel do Aluno</h4>
+                <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">
+                  Acompanhamento centralizado de tarefas pendentes, tarefas concluídas, média de pontuação e acesso ágil aos tópicos recentes publicados pelo docente.
+                </p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">📱</div>
+                <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Totalmente Responsivo</h4>
+                <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">
+                  Interface fluida adaptada perfeitamente para computadores, notebooks, tablets e smartphones, garantindo estudo em qualquer lugar.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Chamada Rápida para Ação -->
+        <div class="card" style="background: var(--surface); border: 2px dashed var(--primary-300); text-align: center; padding: 2rem;">
+          <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Deseja experimentar o sistema agora?</h4>
+          <p style="color: var(--text-muted); margin-bottom: 1.25rem;">
+            Você pode alternar entre os perfis de Professor e Aluno para testar todas as funcionalidades.
+          </p>
+          <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+            <button type="button" class="btn btn-primary" onclick="window.location.hash='#login'">Ir para Tela de Acesso</button>
+            <button type="button" class="btn btn-outline" onclick="window.location.hash='#conteudos'">Ver Conteúdos Sem Logar</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------
+           VIEW 2: TELA DE LOGIN & DEMONSTRAÇÃO
+           ------------------------------------------------------------------ -->
+      <section id="view-login" class="view-section">
+        <div style="max-width: 520px; margin: 2rem auto;">
+          <div class="card" style="box-shadow: var(--shadow-lg);">
+            <div class="card-header" style="text-align: center; display: block; padding: 1.75rem 1.5rem 1rem;">
+              <div class="brand-icon" style="margin: 0 auto 0.75rem; width: 48px; height: 48px;">🔬</div>
+              <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-main);">Entrar no BioConecta</h2>
+              <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0.25rem;">
+                Acesse o ambiente da disciplina de Biologia
+              </p>
+            </div>
+
+            <div class="card-body">
+              
+              <!-- Atalhos de Demonstração em 1 Clique -->
+              <div style="background: #f8fafc; border: 1px solid var(--surface-border); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.5rem; text-align: center;">
+                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem;">
+                  ⚡ Acesso Rápido de Teste (1 Clique)
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                  <button type="button" class="btn btn-outline-primary btn-sm" id="btn-demo-professor" style="font-weight: 700;">
+                    👩‍🏫 Entrar como Professor
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm" id="btn-demo-aluno" style="font-weight: 700;">
+                    👨‍🎓 Entrar como Aluno
+                  </button>
+                </div>
+              </div>
+
+              <!-- Formulário Formal -->
+              <form id="login-form">
+                <div class="form-group">
+                  <label class="form-label" for="login-email">E-mail institucional <span class="required">*</span></label>
+                  <input type="email" id="login-email" class="form-control" placeholder="exemplo@biologia.edu" required value="aluno@biologia.edu">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="login-password">Senha de acesso <span class="required">*</span></label>
+                  <input type="password" id="login-password" class="form-control" placeholder="Digite sua senha" required value="123456">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Perfil de Acesso <span class="required">*</span></label>
+                  <div style="display: flex; gap: 1.5rem; margin-top: 0.25rem;">
+                    <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; font-size: 0.95rem;">
+                      <input type="radio" name="login-role" value="aluno" checked>
+                      Aluno
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; font-size: 0.95rem;">
+                      <input type="radio" name="login-role" value="professor">
+                      Professor
+                    </label>
+                  </div>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                  <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    Entrar na Plataforma
+                  </button>
+                </div>
+              </form>
+
+            </div>
+
+            <div class="card-footer" style="justify-content: center; font-size: 0.82rem; color: var(--text-muted);">
+              Ambiente de Demonstração Acadêmica • Senhas padrão já preenchidas
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------
+           VIEW 3: DASHBOARD DO PROFESSOR
+           ------------------------------------------------------------------ -->
+      <section id="view-professor-dashboard" class="view-section">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+          <div>
+            <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--text-main);">Painel do Professor</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Gerenciamento acadêmico da disciplina de Biologia • Docente responsável
+            </p>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button type="button" class="btn btn-primary btn-sm" id="btn-quick-new-content" onclick="window.location.hash='#conteudos'; document.getElementById('btn-new-content')?.click();">
+              ➕ Cadastrar Conteúdo
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-quick-new-activity" onclick="window.location.hash='#atividades'; document.getElementById('btn-new-activity')?.click();">
+              ➕ Cadastrar Atividade
+            </button>
+          </div>
+        </div>
+
+        <!-- KPIs / Métricas -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;" class="grid-4-cols">
+          <div class="metric-card">
+            <div class="metric-icon-box" style="background: #d1fae5; color: var(--primary-700);">📚</div>
+            <div class="metric-info">
+              <span class="metric-number" id="prof-kpi-contents">0</span>
+              <span class="metric-label">Conteúdos Cadastrados</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon-box" style="background: #e0f2fe; color: var(--secondary-700);">📋</div>
+            <div class="metric-info">
+              <span class="metric-number" id="prof-kpi-activities">0</span>
+              <span class="metric-label">Atividades Criadas</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon-box" style="background: #ede9fe; color: #7c3aed;">👨‍🎓</div>
+            <div class="metric-info">
+              <span class="metric-number" id="prof-kpi-students">0</span>
+              <span class="metric-label">Alunos Matriculados</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon-box" style="background: #fef3c7; color: #b45309;">📨</div>
+            <div class="metric-info">
+              <span class="metric-number" id="prof-kpi-submissions">0</span>
+              <span class="metric-label">Submissões Recebidas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Listas Rápidas do Painel -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;" class="grid-2-cols">
+          
+          <!-- Conteúdos Recentes -->
+          <div class="card">
+            <div class="card-header">
+              <h3 style="font-size: 1.1rem; font-weight: 700;">Últimos Conteúdos Publicados</h3>
+              <a href="#conteudos" class="btn-link" style="font-size: 0.85rem;">Ver todos</a>
+            </div>
+            <div class="card-body" id="prof-recent-contents-list" style="padding-top: 0.5rem;">
+              <!-- Preenchido via app.js -->
+            </div>
+          </div>
+
+          <!-- Atividades e Entregas -->
+          <div class="card">
+            <div class="card-header">
+              <h3 style="font-size: 1.1rem; font-weight: 700;">Atividades e Acompanhamento</h3>
+              <a href="#atividades" class="btn-link" style="font-size: 0.85rem;">Gerenciar todas</a>
+            </div>
+            <div class="card-body" id="prof-recent-activities-list" style="padding-top: 0.5rem;">
+              <!-- Preenchido via app.js -->
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------
+           VIEW 4: DASHBOARD DO ALUNO
+           ------------------------------------------------------------------ -->
+      <section id="view-student-dashboard" class="view-section">
+        <div style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--text-main);">Painel do Aluno</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Acompanhe suas atividades, notas e materiais de estudo da disciplina de Biologia
+          </p>
+        </div>
+
+        <!-- Indicadores do Estudante -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;" class="grid-4-cols">
+          <div class="metric-card">
+            <div class="metric-icon-box" style="background: #fef3c7; color: #b45309;">⏳</div>
+            <div class="metric-info">
+              <span class="metric-number" id="student-kpi-pending">0</span>
+              <span class="metric-label">Atividades Pendentes</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon-box" style="background: #d1fae5; color: #047857;">✅</div>
+            <div class="metric-info">
+              <span class="metric-number" id="student-kpi-completed">0</span>
+              <span class="metric-label">Atividades Concluídas</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon-box" style="background: #ede9fe; color: #6d28d9;">⭐</div>
+            <div class="metric-info">
+              <span class="metric-number" id="student-kpi-average">0.0</span>
+              <span class="metric-label">Média de Desempenho</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon-box" style="background: #e0f2fe; color: #0369a1;">📖</div>
+            <div class="metric-info">
+              <span class="metric-number" id="student-kpi-contents">0</span>
+              <span class="metric-label">Tópicos Disponíveis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Atividades Pendentes e Conteúdos Recomendados -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;" class="grid-2-cols">
+          
+          <div class="card">
+            <div class="card-header">
+              <h3 style="font-size: 1.1rem; font-weight: 700;">Atividades a Fazer</h3>
+              <a href="#atividades" class="btn-link" style="font-size: 0.85rem;">Todas as atividades</a>
+            </div>
+            <div class="card-body" id="student-pending-activities-list">
+              <!-- Preenchido via app.js -->
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 style="font-size: 1.1rem; font-weight: 700;">Materiais Recomendados</h3>
+              <a href="#conteudos" class="btn-link" style="font-size: 0.85rem;">Explorar todos</a>
+            </div>
+            <div class="card-body" id="student-recent-contents-list">
+              <!-- Preenchido via app.js -->
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------
+           VIEW 5: CONTEÚDOS DIDÁTICOS DE BIOLOGIA
+           ------------------------------------------------------------------ -->
+      <section id="view-contents" class="view-section">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+          <div>
+            <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--text-main);">Conteúdos de Biologia</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Resumos teóricos, organelas, genética, ecologia e materiais complementares organizados por temas
+            </p>
+          </div>
+
+          <!-- Botão visível exclusivamente para o Professor -->
+          <button type="button" class="btn btn-primary prof-only" id="btn-new-content">
+            ➕ Novo Conteúdo
+          </button>
+        </div>
+
+        <!-- Filtros e Pesquisa -->
+        <div class="filter-container">
+          <div class="filter-main-row">
+            <div class="search-input-box">
+              <span class="search-icon-inside">🔍</span>
+              <input type="text" id="content-search-input" class="form-control" placeholder="Pesquisar por título, palavra-chave ou texto...">
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Filtrar por Tema:</span>
+            <div class="theme-chips-list" id="content-theme-pills">
+              <!-- Gerado via content.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid de Cards de Conteúdo -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;" id="contents-grid">
+          <!-- Gerado via content.js -->
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------
+           VIEW 6: ATIVIDADES AVALIATIVAS
+           ------------------------------------------------------------------ -->
+      <section id="view-activities" class="view-section">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+          <div>
+            <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--text-main);">Atividades Avaliativas</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Resolva questões, receba feedback imediato e acompanhe seus prazos de entrega
+            </p>
+          </div>
+
+          <button type="button" class="btn btn-primary prof-only" id="btn-new-activity">
+            ➕ Nova Atividade
+          </button>
+        </div>
+
+        <!-- Filtros de Atividades -->
+        <div class="filter-container" style="flex-direction: row; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button type="button" class="btn btn-outline btn-sm activity-filter-btn active" data-filter="todas">Todas</button>
+            <button type="button" class="btn btn-outline btn-sm activity-filter-btn" data-filter="pendentes">⏳ Pendentes</button>
+            <button type="button" class="btn btn-outline btn-sm activity-filter-btn" data-filter="concluidas">✅ Concluídas</button>
+          </div>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">
+            Pontuações calculadas automaticamente após o envio
+          </span>
+        </div>
+
+        <!-- Grid de Atividades -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;" id="activities-grid">
+          <!-- Gerado via activity.js -->
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------
+           VIEW 7: BANCO DE QUESTÕES (PRÁTICA & SIMULADO)
+           ------------------------------------------------------------------ -->
+      <section id="view-questions" class="view-section">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+          <div>
+            <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--text-main);">Banco de Questões de Biologia</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Pratique questões de fixação e vestibulares com respostas comentadas
+            </p>
+          </div>
+
+          <button type="button" class="btn btn-primary prof-only" id="btn-new-question">
+            ➕ Nova Questão no Banco
+          </button>
+        </div>
+
+        <!-- Filtros do Banco de Questões -->
+        <div class="filter-container">
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 200px;">
+              <label class="form-label" style="font-size: 0.82rem;">Filtrar por Tema</label>
+              <select id="filter-question-theme" class="form-select">
+                <option value="Todos">Todos os Temas</option>
+                <option value="Citologia">Citologia</option>
+                <option value="Genética">Genética</option>
+                <option value="Ecologia">Ecologia</option>
+                <option value="Evolução">Evolução</option>
+                <option value="Fisiologia Humana">Fisiologia Humana</option>
+                <option value="Botânica">Botânica</option>
+                <option value="Zoologia">Zoologia</option>
+                <option value="Microbiologia">Microbiologia</option>
+                <option value="Biotecnologia">Biotecnologia</option>
+              </select>
+            </div>
+
+            <div style="flex: 1; min-width: 200px;">
+              <label class="form-label" style="font-size: 0.82rem;">Filtrar por Dificuldade</label>
+              <select id="filter-question-diff" class="form-select">
+                <option value="Todas">Todas as Dificuldades</option>
+                <option value="Fácil">Fácil</option>
+                <option value="Médio">Médio</option>
+                <option value="Difícil">Difícil</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lista de Questões para Prática -->
+        <div id="questions-list-container">
+          <!-- Gerado via question.js -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ====================================================================
+         MODAIS DO SISTEMA
+         ==================================================================== -->
+
+    <!-- 1. Modal: Leitura Completa de Conteúdo -->
+    <div class="modal-overlay" id="modal-read-content">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-header">
+          <div>
+            <span id="modal-read-theme" class="badge">Tema</span>
+            <span id="modal-read-date" style="font-size: 0.8rem; color: var(--text-muted); margin-left: 0.5rem;">Data</span>
+          </div>
+          <button type="button" class="modal-close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <h2 id="modal-read-title" style="font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; line-height: 1.3;">
+            Título do Conteúdo
+          </h2>
+          <img id="modal-read-image" src="" alt="Imagem do Conteúdo" style="width: 100%; max-height: 320px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 1.5rem; display: none;">
+          <div id="modal-read-body" style="font-size: 1rem; line-height: 1.7; color: #334155;">
+            Texto didático...
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a id="modal-read-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm" style="display: none;">
+            🔗 Material Complementar
+          </a>
+          <button type="button" class="btn btn-outline btn-modal-cancel">Fechar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Modal: Criar / Editar Conteúdo (Professor) -->
+    <div class="modal-overlay" id="modal-content-form">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-header">
+          <h3 class="modal-title" id="modal-content-form-title">Cadastrar Conteúdo Didático</h3>
+          <button type="button" class="modal-close-btn">&times;</button>
+        </div>
+        <form id="content-editor-form">
+          <div class="modal-body">
+            <input type="hidden" id="content-form-id">
+            
+            <div class="form-row">
+              <div class="form-group" style="flex: 2;">
+                <label class="form-label" for="content-form-title">Título do Conteúdo <span class="required">*</span></label>
+                <input type="text" id="content-form-title" class="form-control" required placeholder="Ex: Síntese Proteica e Ribossomos">
+              </div>
+
+              <div class="form-group" style="flex: 1;">
+                <label class="form-label" for="content-form-theme">Tema de Biologia <span class="required">*</span></label>
+                <select id="content-form-theme" class="form-select" required>
+                  <option value="Citologia">Citologia</option>
+                  <option value="Genética">Genética</option>
+                  <option value="Ecologia">Ecologia</option>
+                  <option value="Evolução">Evolução</option>
+                  <option value="Fisiologia Humana">Fisiologia Humana</option>
+                  <option value="Botânica">Botânica</option>
+                  <option value="Zoologia">Zoologia</option>
+                  <option value="Microbiologia">Microbiologia</option>
+                  <option value="Biotecnologia">Biotecnologia</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="content-form-desc">Breve Descrição / Resumo <span class="required">*</span></label>
+              <input type="text" id="content-form-desc" class="form-control" required placeholder="Resumo em 1 ou 2 frases para o card...">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="content-form-text">Texto Explicativo Detalhado <span class="required">*</span></label>
+              <textarea id="content-form-text" class="form-textarea" rows="6" required placeholder="Escreva o texto didático completo para os estudantes..."></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="content-form-image">URL da Imagem Ilustrativa (Opcional)</label>
+                <input type="url" id="content-form-image" class="form-control" placeholder="https://exemplo.com/imagem.jpg">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="content-form-link">Link para Material Complementar (Opcional)</label>
+                <input type="url" id="content-form-link" class="form-control" placeholder="https://siteconfiavel.org/artigo">
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline btn-modal-cancel">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Salvar Conteúdo</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 3. Modal: Resolver Atividade (Aluno) -->
+    <div class="modal-overlay" id="modal-solve-activity">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-header">
+          <div>
+            <h3 class="modal-title" id="solve-activity-title">Responder Atividade</h3>
+            <p id="solve-activity-desc" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;"></p>
+          </div>
+          <button type="button" class="modal-close-btn">&times;</button>
+        </div>
+        <form id="activity-solve-form">
+          <div class="modal-body">
+            <div id="solve-result-box" style="margin-bottom: 1rem; display: none;"></div>
+            <div id="solve-questions-container">
+              <!-- Gerado via activity.js -->
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline btn-modal-cancel">Fechar</button>
+            <button type="submit" class="btn btn-primary" id="btn-submit-answers">Finalizar e Enviar Respostas</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 4. Modal: Criar Nova Atividade (Professor) -->
+    <div class="modal-overlay" id="modal-create-activity">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-header">
+          <h3 class="modal-title">Cadastrar Atividade Avaliativa</h3>
+          <button type="button" class="modal-close-btn">&times;</button>
+        </div>
+        <form id="activity-editor-form">
+          <div class="modal-body">
+            
+            <div class="form-row">
+              <div class="form-group" style="flex: 2;">
+                <label class="form-label" for="act-form-title">Título da Atividade <span class="required">*</span></label>
+                <input type="text" id="act-form-title" class="form-control" required placeholder="Ex: Avaliação Formativa de Ecologia">
+              </div>
+
+              <div class="form-group" style="flex: 1;">
+                <label class="form-label" for="act-form-theme">Tema <span class="required">*</span></label>
+                <select id="act-form-theme" class="form-select" required>
+                  <option value="Citologia">Citologia</option>
+                  <option value="Genética">Genética</option>
+                  <option value="Ecologia">Ecologia</option>
+                  <option value="Evolução">Evolução</option>
+                  <option value="Fisiologia Humana">Fisiologia Humana</option>
+                  <option value="Botânica">Botânica</option>
+                  <option value="Zoologia">Zoologia</option>
+                  <option value="Microbiologia">Microbiologia</option>
+                  <option value="Biotecnologia">Biotecnologia</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="act-form-desc">Orientações e Instruções <span class="required">*</span></label>
+              <textarea id="act-form-desc" class="form-textarea" rows="2" required placeholder="Instruções para os estudantes..."></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="act-form-deadline">Prazo de Entrega <span class="required">*</span></label>
+                <input type="date" id="act-form-deadline" class="form-control" required value="2026-05-15">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="act-form-points">Pontuação Total (Nota) <span class="required">*</span></label>
+                <input type="number" id="act-form-points" class="form-control" required min="1" max="100" step="0.5" value="10">
+              </div>
+            </div>
+
+            <!-- Questões Dinâmicas -->
+            <div style="margin-top: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main);">Questões Objetivas da Atividade</h4>
+                <button type="button" class="btn btn-outline btn-sm" id="btn-add-form-question">
+                  ➕ Adicionar Outra Questão
+                </button>
+              </div>
+
+              <div id="form-questions-wrapper">
+                <!-- Inserido dinamicamente via activity.js -->
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline btn-modal-cancel">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Salvar Atividade</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 5. Modal: Submissões de Alunos (Professor) -->
+    <div class="modal-overlay" id="modal-submissions">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-header">
+          <h3 class="modal-title" id="modal-submissions-title">Submissões dos Alunos</h3>
+          <button type="button" class="modal-close-btn">&times;</button>
+        </div>
+        <div class="modal-body" id="submissions-list-table">
+          <!-- Tabela gerada via activity.js -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline btn-modal-cancel">Fechar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Modal: Cadastrar Nova Questão no Banco (Professor) -->
+    <div class="modal-overlay" id="modal-new-question">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-header">
+          <h3 class="modal-title">Cadastrar Questão no Banco de Questões</h3>
+          <button type="button" class="modal-close-btn">&times;</button>
+        </div>
+        <form id="question-create-form">
+          <div class="modal-body">
+            
+            <div class="form-row">
+              <div class="form-group" style="flex: 2;">
+                <label class="form-label" for="new-q-tema">Tema de Biologia <span class="required">*</span></label>
+                <select id="new-q-tema" class="form-select" required>
+                  <option value="Citologia">Citologia</option>
+                  <option value="Genética">Genética</option>
+                  <option value="Ecologia">Ecologia</option>
+                  <option value="Evolução">Evolução</option>
+                  <option value="Fisiologia Humana">Fisiologia Humana</option>
+                  <option value="Botânica">Botânica</option>
+                  <option value="Zoologia">Zoologia</option>
+                  <option value="Microbiologia">Microbiologia</option>
+                  <option value="Biotecnologia">Biotecnologia</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="flex: 1;">
+                <label class="form-label" for="new-q-dificuldade">Dificuldade <span class="required">*</span></label>
+                <select id="new-q-dificuldade" class="form-select" required>
+                  <option value="Fácil">Fácil</option>
+                  <option value="Médio">Médio</option>
+                  <option value="Difícil">Difícil</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="new-q-enunciado">Enunciado da Questão <span class="required">*</span></label>
+              <textarea id="new-q-enunciado" class="form-textarea" rows="3" required placeholder="Digite o enunciado completo..."></textarea>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;">
+              <label class="form-label">Alternativas <span class="required">* (Marque o rádio da resposta correta)</span></label>
+              
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <input type="radio" name="new-q-correct" value="0" checked title="Marcar como correta">
+                <input type="text" id="new-q-alt-0" class="form-control" required placeholder="Alternativa A">
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <input type="radio" name="new-q-correct" value="1" title="Marcar como correta">
+                <input type="text" id="new-q-alt-1" class="form-control" required placeholder="Alternativa B">
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <input type="radio" name="new-q-correct" value="2" title="Marcar como correta">
+                <input type="text" id="new-q-alt-2" class="form-control" required placeholder="Alternativa C">
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <input type="radio" name="new-q-correct" value="3" title="Marcar como correta">
+                <input type="text" id="new-q-alt-3" class="form-control" required placeholder="Alternativa D">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="new-q-explicacao">Explicação / Resolução Comentada <span class="required">*</span></label>
+              <textarea id="new-q-explicacao" class="form-textarea" rows="2" required placeholder="Explique por que esta alternativa é a correta para feedback do aluno..."></textarea>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline btn-modal-cancel">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Salvar no Banco</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Container de Notificações Toast -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- ====================================================================
+         RODAPÉ INFORMATIVO
+         ==================================================================== -->
+    <footer class="app-footer">
+      <div class="footer-container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="brand-icon" style="width: 32px; height: 32px; font-size: 0.9rem;">🌿</div>
+            <div>
+              <strong style="color: var(--text-main);">BioConecta</strong>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Mini Sistema Web de Apoio ao Ensino de Biologia</div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <button type="button" class="btn btn-outline btn-sm" id="btn-reset-data" title="Restaurar conteúdos e atividades iniciais de demonstração">
+              🔄 Resetar Dados de Demonstração
+            </button>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>Projeto Acadêmico desenvolvido para a disciplina de Biologia • 2026</div>
+          <div>Desenvolvido com HTML5, CSS3 Moderno e JavaScript ES6 Modular</div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts Modulares -->
+  <script type="module" src="js/storage.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/content.js"></script>
+  <script type="module" src="js/activity.js"></script>
+  <script type="module" src="js/question.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
